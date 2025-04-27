@@ -1,11 +1,8 @@
 import Link from "next/link";
 
-interface PostParam {
-  id: string;
-}
-
-export default function Post(params: PostParam) {
-  const { id } = params;
+export default async function Post(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
+  const id = params.id;
   return (
     <div>
       <h3>Post #{id}</h3>
